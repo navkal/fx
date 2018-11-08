@@ -542,7 +542,7 @@
 
   function init()
   {
-    //$( '#table_pane' ).on( 'resize', onResizePane );
+    $( '#table_pane' ).on( 'resize', onResizePane );
     $( '#table_pane' ).on( 'scroll', onScrollPane );
 
     $( '#bgt_table' ).tablesorter(
@@ -561,12 +561,13 @@
 
   function onResizePane( tEvent )
   {
-    g_tWrapper.show();
+    console.log('resize');
   }
 
   function onScrollPane( tEvent )
   {
-    g_tWrapper.show();
+    console.log('scroll');
+    $(tEvent.target).resize();
   }
 </script>
 
