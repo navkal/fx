@@ -535,13 +535,14 @@
   </table>
 
 <script>
+  var g_tWrapper = null;
 
 
   $( document ).ready( init );
 
   function init()
   {
-    $( '#table_pane' ).on( 'resize', onResizePane );
+    //$( '#table_pane' ).on( 'resize', onResizePane );
     $( '#table_pane' ).on( 'scroll', onScrollPane );
 
     $( '#bgt_table' ).tablesorter(
@@ -554,25 +555,18 @@
         }
       }
     );
+
+    g_tWrapper = $( '.tablesorter-sticky-wrapper' );
   }
 
   function onResizePane( tEvent )
   {
-    var tWrapper = $( '.tablesorter-sticky-wrapper' );
-    if ( tWrapper.width() > $( tEvent.target ).width() )
-    {
-      tWrapper.hide();
-    }
-    else
-    {
-      tWrapper.show();
-    }
+    g_tWrapper.show();
   }
 
   function onScrollPane( tEvent )
   {
-    var tTarget = $( tEvent.target );
-    console.log( tTarget.scrollTop() );
+    g_tWrapper.show();
   }
 </script>
 
