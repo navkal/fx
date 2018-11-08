@@ -542,6 +542,7 @@
   function init()
   {
     $( '#table_pane' ).on( 'resize', onResizePane );
+    $( '#table_pane' ).on( 'scroll', onScrollPane );
 
     $( '#bgt_table' ).tablesorter(
       {
@@ -566,6 +567,12 @@
     {
       tWrapper.show();
     }
+  }
+
+  function onScrollPane( tEvent )
+  {
+    var tTarget = $( tEvent.target );
+    console.log( tTarget.scrollTop() );
   }
 </script>
 
