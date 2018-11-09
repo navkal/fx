@@ -564,7 +564,6 @@
 
   function onResizePane()
   {
-    console.log('resize');
     var iWidth = g_tPane.width() - scrollbarWidth();
     var iHeight = g_tWrapper.height();
     g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
@@ -572,7 +571,6 @@
 
   function onScrollPane()
   {
-    console.log('scroll');
     g_tPane.resize();
   }
 
