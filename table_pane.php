@@ -570,6 +570,7 @@
     g_tViewTableProps.widgetOptions.stickyHeaders_offset = g_tTable.offset().top;
     g_tTable.tablesorter( g_tViewTableProps );
 
+    // Get the sticky wrapper
     g_tStickyWrapper = $( '.tablesorter-sticky-wrapper' );
 
     // Handle possibility that window is initially scrolled
