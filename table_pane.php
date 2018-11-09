@@ -547,8 +547,8 @@
     g_tTablePane = $( '#bgt_table' ).parent();
 
     // Set event handlers
-    g_tTablePane.on( 'resize', onResizePane );
-    g_tTablePane.on( 'scroll', onScrollPane );
+    g_tTablePane.on( 'resize', onResizeTablePane );
+    g_tTablePane.on( 'scroll', onScrollTablePane );
     $( window ).on( 'scroll', onScrollWindow );
 
     // Initialize the tablesorter
@@ -569,7 +569,7 @@
     onScrollWindow();
   }
 
-  function onResizePane()
+  function onResizeTablePane()
   {
     // Clip the wrapper
     var iWidth = g_tTablePane.width() - scrollbarWidth();
@@ -577,7 +577,7 @@
     g_tStickyWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
-  function onScrollPane()
+  function onScrollTablePane()
   {
     // Fire resize event
     g_tTablePane.resize();
