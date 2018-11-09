@@ -535,6 +535,7 @@
   </table>
 
 <script>
+  var g_tPane = null;
   var g_tWrapper = null;
 
 
@@ -542,8 +543,10 @@
 
   function init()
   {
-    $( '#table_pane' ).on( 'resize', onResizePane );
-    $( '#table_pane' ).on( 'scroll', onScrollPane );
+    g_tPane = $( '#table_pane' );
+    g_tPane.on( 'resize', onResizePane );
+    g_tPane.on( 'scroll', onScrollPane );
+    $( window ).on( 'scroll', onScrollWindow );
 
     $( '#bgt_table' ).tablesorter(
       {
@@ -559,30 +562,37 @@
     g_tWrapper = $( '.tablesorter-sticky-wrapper' );
   }
 
-  function onResizePane( tEvent )
+  function onResizePane()
   {
     console.log('resize');
-    var iWidth = $( '#table_pane' ).width() - scrollbarWidth();
+    var iWidth = g_tPane.width() - scrollbarWidth();
     var iHeight = g_tWrapper.height();
     g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
-  function onScrollPane( tEvent )
+  function onScrollPane()
   {
     console.log('scroll');
-    $(tEvent.target).resize();
+    g_tPane.resize();
   }
-  
+
+  function onScrollWindow()
+  {
+    console.log( 'scroll window' );
+    console.log( $( window ).scrollTop() );
+    g_tPane.resize();
+  }
+
   function scrollbarWidth()
-  { 
-    var div = $('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div>'); 
-    // Append our div, do our calculation and then remove it 
-    $('body').append(div); 
-    var w1 = $('div', div).innerWidth(); 
-    div.css('overflow-y', 'scroll'); 
-    var w2 = $('div', div).innerWidth(); 
-    $(div).remove(); 
-    return (w1 - w2); 
+  {
+    var div = $('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div>');
+    // Append our div, do our calculation and then remove it
+    $('body').append(div);
+    var w1 = $('div', div).innerWidth();
+    div.css('overflow-y', 'scroll');
+    var w2 = $('div', div).innerWidth();
+    $(div).remove();
+    return (w1 - w2);
   }
 </script>
 
