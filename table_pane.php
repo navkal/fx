@@ -546,10 +546,12 @@
     g_tPane = $( '#table_pane' );
     g_tTable = $( '#bgt_table' );
 
+    // Set event handlers
     g_tPane.on( 'resize', onResizePane );
     g_tPane.on( 'scroll', onScrollPane );
     $( window ).on( 'scroll', onScrollWindow );
 
+    // Initialize the tablesorter
     $( '#bgt_table' ).tablesorter(
       {
         theme: 'dropbox',
@@ -563,11 +565,13 @@
 
     g_tWrapper = $( '.tablesorter-sticky-wrapper' );
 
+    // Handle possibility that window is initially scrolled
     onScrollWindow();
   }
 
   function onResizePane()
   {
+    // Clip the wrapper
     var iWidth = g_tPane.width() - scrollbarWidth();
     var iHeight = g_tWrapper.height();
     g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
@@ -575,12 +579,16 @@
 
   function onScrollPane()
   {
+    // Fire resize event
     g_tPane.resize();
   }
 
   function onScrollWindow()
   {
+    // Fire resize event
     g_tPane.resize();
+
+    // Move the wrapper
     var tOffset =
     {
       top: g_tPane.offset().top + 1,
