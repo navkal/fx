@@ -582,9 +582,8 @@
 
   function onScrollWindow()
   {
-    console.log( 'scroll window' );
-    console.log( $( window ).scrollTop() );
     g_tPane.resize();
+    g_tWrapper.offset( { top: g_tPane.offset().top, left: g_tWrapper.offset().left } );
   }
 
   function scrollbarWidth()
