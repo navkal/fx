@@ -539,7 +539,6 @@
   var g_tTable = null;
   var g_tWrapper = null;
 
-
   $( document ).ready( init );
 
   function init()
@@ -571,7 +570,6 @@
   {
     var iWidth = g_tPane.width() - scrollbarWidth();
     var iHeight = g_tWrapper.height();
-
     g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
@@ -583,7 +581,13 @@
   function onScrollWindow()
   {
     g_tPane.resize();
-    g_tWrapper.offset( { top: g_tPane.offset().top, left: g_tWrapper.offset().left } );
+    var tOffset =
+    {
+      top: g_tPane.offset().top + 1,
+      left: g_tWrapper.offset().left
+    };
+
+    g_tWrapper.offset( tOffset );
   }
 
   function scrollbarWidth()
