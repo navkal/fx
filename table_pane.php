@@ -536,6 +536,7 @@
 
 <script>
   var g_tPane = null;
+  var g_tTable = null;
   var g_tWrapper = null;
 
 
@@ -544,6 +545,8 @@
   function init()
   {
     g_tPane = $( '#table_pane' );
+    g_tTable = $( '#bgt_table' );
+
     g_tPane.on( 'resize', onResizePane );
     g_tPane.on( 'scroll', onScrollPane );
     $( window ).on( 'scroll', onScrollWindow );
@@ -554,18 +557,21 @@
         widgets: ['stickyHeaders'],
         widgetOptions:
         {
-          stickyHeaders_offset : $( '#bgt_table' ).offset().top
+          stickyHeaders_offset : g_tTable.offset().top
         }
       }
     );
 
     g_tWrapper = $( '.tablesorter-sticky-wrapper' );
+
+    onScrollWindow();
   }
 
   function onResizePane()
   {
     var iWidth = g_tPane.width() - scrollbarWidth();
     var iHeight = g_tWrapper.height();
+
     g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
