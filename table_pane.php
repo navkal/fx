@@ -562,8 +562,9 @@
   function onResizePane( tEvent )
   {
     console.log('resize');
-    var iWidth = $( '#table_pane' ).width() - getScrollbarWidth();
-    g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,200px,0px)' );
+    var iWidth = $( '#table_pane' ).width() - scrollbarWidth();
+    var iHeight = g_tWrapper.height();
+    g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
   function onScrollPane( tEvent )
@@ -572,30 +573,16 @@
     $(tEvent.target).resize();
   }
   
-  function getScrollbarWidth() {
-    var outer = document.createElement("div");
-    outer.style.visibility = "hidden";
-    outer.style.width = "100px";
-    outer.style.msOverflowStyle = "scrollbar"; // needed for WinJS apps
-
-    document.body.appendChild(outer);
-
-    var widthNoScroll = outer.offsetWidth;
-    // force scrollbars
-    outer.style.overflow = "scroll";
-
-    // add innerdiv
-    var inner = document.createElement("div");
-    inner.style.width = "100%";
-    outer.appendChild(inner);        
-
-    var widthWithScroll = inner.offsetWidth;
-
-    // remove divs
-    outer.parentNode.removeChild(outer);
-
-    return widthNoScroll - widthWithScroll;
-}
+  function scrollbarWidth() { 
+    var div = $('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div>'); 
+    // Append our div, do our calculation and then remove it 
+    $('body').append(div); 
+    var w1 = $('div', div).innerWidth(); 
+    div.css('overflow-y', 'scroll'); 
+    var w2 = $('div', div).innerWidth(); 
+    $(div).remove(); 
+    return (w1 - w2); 
+  }
 </script>
 
 
