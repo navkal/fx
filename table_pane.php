@@ -543,8 +543,8 @@
 
   function init()
   {
-    g_tPane = $( '#table_pane' );
     g_tTable = $( '#bgt_table' );
+    g_tPane = $( '#bgt_table' ).parent();
 
     // Set event handlers
     g_tPane.on( 'resize', onResizePane );
