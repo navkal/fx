@@ -535,20 +535,20 @@
   </table>
 
 <script>
-  var g_tPane = null;
+  var g_tTablePane = null;
   var g_tTable = null;
-  var g_tWrapper = null;
+  var g_tStickyWrapper = null;
 
   $( document ).ready( init );
 
   function init()
   {
     g_tTable = $( '#bgt_table' );
-    g_tPane = $( '#bgt_table' ).parent();
+    g_tTablePane = $( '#bgt_table' ).parent();
 
     // Set event handlers
-    g_tPane.on( 'resize', onResizePane );
-    g_tPane.on( 'scroll', onScrollPane );
+    g_tTablePane.on( 'resize', onResizePane );
+    g_tTablePane.on( 'scroll', onScrollPane );
     $( window ).on( 'scroll', onScrollWindow );
 
     // Initialize the tablesorter
@@ -563,7 +563,7 @@
       }
     );
 
-    g_tWrapper = $( '.tablesorter-sticky-wrapper' );
+    g_tStickyWrapper = $( '.tablesorter-sticky-wrapper' );
 
     // Handle possibility that window is initially scrolled
     onScrollWindow();
@@ -572,30 +572,30 @@
   function onResizePane()
   {
     // Clip the wrapper
-    var iWidth = g_tPane.width() - scrollbarWidth();
-    var iHeight = g_tWrapper.height();
-    g_tWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
+    var iWidth = g_tTablePane.width() - scrollbarWidth();
+    var iHeight = g_tStickyWrapper.height();
+    g_tStickyWrapper.css( 'clip', 'rect(0px,' + iWidth + 'px,' + iHeight + 'px,0px)' );
   }
 
   function onScrollPane()
   {
     // Fire resize event
-    g_tPane.resize();
+    g_tTablePane.resize();
   }
 
   function onScrollWindow()
   {
     // Fire resize event
-    g_tPane.resize();
+    g_tTablePane.resize();
 
     // Move the wrapper
     var tOffset =
     {
-      top: g_tPane.offset().top + 1,
-      left: g_tWrapper.offset().left
+      top: g_tTablePane.offset().top + 1,
+      left: g_tStickyWrapper.offset().left
     };
 
-    g_tWrapper.offset( tOffset );
+    g_tStickyWrapper.offset( tOffset );
   }
 
   function scrollbarWidth()
