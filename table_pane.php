@@ -46,7 +46,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>000 000</td>
+      <td>aaa 000</td>
       <td>10</td>
       <td>Koala</td>
       <td>http://www.google.com</td>
@@ -543,12 +543,22 @@
   var g_tTable = null;
   var g_tStickyWrapper = null;
 
+  var g_tViewTableProps = jQuery.extend( true, { sortList: [[0,0]] }, g_tTableProps );
+  var g_tFirstColParser =
+  {
+    id: 'firstcol',
+    is: function(){return false;},
+    format: function(s){return s;},
+    parsed: false,
+    type: 'text'
+  };
+
   $( document ).ready( init );
 
   function init()
   {
     g_tTable = $( '#bgt_table' );
-    g_tTablePane = $( '#bgt_table' ).parent();
+    g_tTablePane = g_tTable.parent();
 
     // Set event handlers
     g_tTablePane.on( 'resize', onResizeTablePane );
@@ -556,8 +566,9 @@
     $( window ).on( 'scroll', onScrollWindow );
 
     // Initialize the tablesorter
-    g_tTableProps.widgetOptions.stickyHeaders_offset = g_tTable.offset().top;
-    $( '#bgt_table' ).tablesorter( g_tTableProps );
+    $.tablesorter.addParser( g_tFirstColParser );
+    g_tViewTableProps.widgetOptions.stickyHeaders_offset = g_tTable.offset().top;
+    g_tTable.tablesorter( g_tViewTableProps );
 
     g_tStickyWrapper = $( '.tablesorter-sticky-wrapper' );
 
