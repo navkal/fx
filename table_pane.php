@@ -542,6 +542,7 @@
   var g_tTablePane = null;
   var g_tTable = null;
   var g_tStickyWrapper = null;
+  var g_iTablesorterThemeTopShift = 0;
 
   var g_tViewTableProps = jQuery.extend( true, { sortList: [[0,0]] }, g_tTableProps );
   var g_tFirstColParser =
@@ -568,7 +569,11 @@
     // Initialize the tablesorter
     $.tablesorter.addParser( g_tFirstColParser );
     g_tViewTableProps.widgetOptions.stickyHeaders_offset = g_tTable.offset().top;
+    //g_tViewTableProps.theme='blue';
+    var iTopBf = g_tTable.offset().top;
     g_tTable.tablesorter( g_tViewTableProps );
+    g_iTablesorterThemeTopShift = g_tTable.offset().top - iTopBf;
+    g_tTable.css( { marginTop: '-=' + g_iTablesorterThemeTopShift + 'px' } );
 
     // Get the sticky wrapper
     g_tStickyWrapper = $( '.tablesorter-sticky-wrapper' );
@@ -599,7 +604,7 @@
     // Move the wrapper
     var tOffset =
     {
-      top: g_tTablePane.offset().top + 1,
+      top: g_tTablePane.offset().top + g_iTablesorterThemeTopShift,
       left: g_tStickyWrapper.offset().left
     };
 
@@ -618,3 +623,4 @@
     return (w1 - w2);
   }
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/css/theme.blue.min.css" integrity="sha256-Xj5kQBWJMyOV0+sPr+wIBUHXdoZ00TPgT+RuiyOXtzo=" crossorigin="anonymous" />
