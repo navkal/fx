@@ -1,6 +1,5 @@
-BACnet Gateway
-&copy; 2018 BACnet Gateway.  All rights reserved.
+File Exchange
+&copy; 2020 Energize Andover.  All rights reserved.
 energizeAndover@gmail.com
-#
-# --- Public views ---
-test,Test,test.php
+download,Download,download/download.php
+upload,Upload,upload/upload.php
