@@ -15,7 +15,6 @@
   <form>
 
     <div class="form-group">
-
       <label for="download_filename">Select a file to download:</label>
       <select id="download_filename" class="form-control" >
         <?php
@@ -29,12 +28,9 @@
           }
         ?>
       </select>
-
     </div>
 
-
-
-    <div id="form-buttons" class="row pt-4 pb-2">
+    <div class="row pt-4 pb-2">
       <div class="col text-center">
         <a id="download_button" class="btn btn-primary" href="" role="button" title="Download selected file">
           Download
@@ -42,10 +38,9 @@
       </div>
     </div>
 
-
   </form>
-</div>
 
+</div>
 
 <script>
 
