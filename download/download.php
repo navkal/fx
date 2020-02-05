@@ -30,12 +30,10 @@
       </select>
     </div>
 
-    <div class="row pt-4 pb-2">
-      <div class="col text-center">
-        <a id="download_button" class="btn btn-primary" href="" role="button" title="Download selected file">
-          Download
-        </a>
-      </div>
+    <div class="pt-4 text-center">
+      <a id="download_button" class="btn btn-primary" href="" role="button" title="Download selected file">
+        Download
+      </a>
     </div>
 
   </form>

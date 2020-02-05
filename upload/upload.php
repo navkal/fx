@@ -14,33 +14,29 @@
   </div>
 
   <form method="post" enctype="multipart/form-data">
-      Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
 
-      <div class="row pt-4 pb-2">
-        <div class="col text-center">
-          <button type="submit" class="btn btn-primary">
-            Upload
-          </button>
-        </div>
-      </div>
-
-  </form>
-  <!---------------------- >
-  <form action="javascript:rq();">
-
-    <div class="form-group">
-      <label for="file">File</label>
-    </div>
-
-    <div id="form-buttons" class="row pt-4 pb-2">
-      <div class="col text-center">
-        <button id="upload-button" type="submit" class="btn btn-primary" tabindex="10">
-          Upload
-        </button>
-      </div>
+    <div class="pt-4 text-center">
+      <button type="submit" class="btn btn-primary">
+        Upload
+      </button>
     </div>
 
   </form>
-  <!---------------------->
+
 </div>
+
+
+<script>
+
+  $( document ).ready( init );
+
+  function init()
+  {
+    if ( window.history.replaceState )
+    {
+      window.history.replaceState( null, null, window.location.href );
+    }
+  }
+</script>
