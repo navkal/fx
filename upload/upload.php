@@ -14,26 +14,19 @@
   </div>
 
   <form method="post" enctype="multipart/form-data">
-    Select image to upload:
 
-
-                  <div class="form-group" id="uploadBlock" >
-                    <div class="input-group">
-                      <label class="input-group-btn">
-                        <span class="btn btn-default">
-                          Browse…
-                          <input type="file" name="uploadFile" id="uploadFile" style="display:none" onchange="showFilename( 'uploadFilename', 'uploadFile' )" >
-                        </span>
-                      </label>
-                      <input id="uploadFilename" type="text" class="form-control" onclick="$('#uploadFile').click();" readonly >
-                    </div>
-                  </div>
-
-
-
-
-
-
+    <div class="form-group" id="uploadBlock" >
+      <label>Select a file to upload:</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-btn btn btn-primary">
+            Browse…
+            <input type="file" name="uploadFile" id="uploadFile" style="display:none" onchange="showFilename( 'uploadFilename', 'uploadFile' )" >
+          </label>
+        </div>
+        <input id="uploadFilename" type="text" class="form-control" onclick="$('#uploadFile').click();" readonly >
+      </div>
+    </div>
 
     <div class="pt-4 text-center">
       <button type="submit" class="btn btn-primary">
@@ -57,7 +50,7 @@
       window.history.replaceState( null, null, window.location.href );
     }
   }
-  
+
 
   // Show selected filename in input field
   function showFilename( sFilenameId, sFileId )
@@ -65,5 +58,5 @@
     var sFilename = $( '#' + sFileId ).val().split('\\').pop().split('/').pop();
     $( '#' + sFilenameId ).val( sFilename );
   }
-  
+
 </script>
