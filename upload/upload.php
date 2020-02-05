@@ -1,6 +1,9 @@
 <?php
-  // Copyright 2018 Building Energy Monitor.  All rights reserved.
+  // Copyright 2020 Energize Andover.  All rights reserved.
 
+  error_log( '=========> upload.php' );
+  error_log( '==> request=' . print_r( $_REQUEST, true ) );
+  error_log( '==> files=' . print_r( $_FILES, true ) );
   $aFiles = [ 'foo'=>'jan', 'moo'=>'feb', 'goo'=>'mar' ];
 ?>
 
