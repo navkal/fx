@@ -1,6 +1,7 @@
 <?php
-  // Copyright 2018 Building Energy Monitor.  All rights reserved.
-  $downloadDir = $_SERVER["DOCUMENT_ROOT"] . "/share/downloads/";
+  // Copyright 2020 Energize Andover.  All rights reserved.
+  
+  $downloadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/downloads/";
   $aFilenames = array_slice( scandir( $downloadDir ), 2 );
   natcasesort( $aFilenames );
 ?>
@@ -30,10 +31,6 @@
       </select>
 
     </div>
-
-
-
-
 
 
 
