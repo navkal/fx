@@ -1,6 +1,6 @@
 <?php
   // Copyright 2020 Energize Andover.  All rights reserved.
-  
+
   $downloadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/downloads/";
   $aFilenames = array_slice( scandir( $downloadDir ), 2 );
   natcasesort( $aFilenames );
@@ -16,8 +16,8 @@
 
     <div class="form-group">
 
-      <label for="download_filename">File</label>
-      <select id="download_filename" class="form-control" tabindex="10" >
+      <label for="download_filename">Select a file to download:</label>
+      <select id="download_filename" class="form-control" >
         <?php
           foreach ( $aFilenames as $sFile )
           {
@@ -55,6 +55,7 @@
   {
     $( '#download_filename' ).on( 'change', updateDownloadButton );
     updateDownloadButton();
+    $( '#download_filename' ).focus();
   }
 
   function updateDownloadButton()
