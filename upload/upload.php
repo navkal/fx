@@ -2,9 +2,6 @@
   // Copyright 2020 Energize Andover.  All rights reserved.
 
   error_log( '=========> upload.php' );
-  error_log( '==> request=' . print_r( $_REQUEST, true ) );
-  error_log( '==> files=' . print_r( $_FILES, true ) );
-  $aFiles = [ 'foo'=>'jan', 'moo'=>'feb', 'goo'=>'mar' ];
 ?>
 
 <div class="container">
@@ -12,7 +9,13 @@
   <div class="h5 py-3">
     Upload a File
   </div>
-
+  
+  <form action="upload/upload_file.php" method="post" enctype="multipart/form-data">
+      Select image to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="submit">
+  </form>
+  <!---------------------- >
   <form action="javascript:rq();">
   
     <div class="form-group">
@@ -28,4 +31,5 @@
     </div>
 
   </form>
+  <!---------------------->
 </div>
