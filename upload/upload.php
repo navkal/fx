@@ -19,7 +19,7 @@
       <label>Select a file to upload:</label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <label class="input-group-btn btn btn-primary">
+          <label class="input-group-btn btn btn-outline-dark">
             Browse…
             <input type="file" name="uploadFile" id="uploadFile" style="display:none" onchange="showFilename( 'uploadFilename', 'uploadFile' )" >
           </label>
