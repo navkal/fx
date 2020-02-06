@@ -21,7 +21,7 @@
     {
       // Did not get a file; set error message
       $bSuccess = false;
-      $sMessage = 'No file selected.';
+      $sMessage = 'Please select a file to upload.';
     }
   }
 ?>
