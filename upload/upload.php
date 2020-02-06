@@ -12,7 +12,9 @@
 
     $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
 
-    $bMoved = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
+    $bSuccess = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
+
+    $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $aFile['name'] . "</b>'" ) : ( "Failed to upload file '<b>" . $aFile['name'] . "</b>'" );
   }
 
 
@@ -49,11 +51,11 @@
 
     <!-- Report status of upload operation -->
     <?php
-    if ( isset( $bMoved ) )
+    if ( isset( $bSuccess ) )
     {
     ?>
-      <div class="alert alert-<?= ( $bMoved ? 'success' : 'danger' ) ?>">
-        moo
+      <div class="alert alert-<?=( $bSuccess ? 'success' : 'danger' )?>">
+        <?=$sMessage?>
       </div>
     <?php
     }
