@@ -1,12 +1,28 @@
 <?php
   // Copyright 2020 Energize Andover.  All rights reserved.
 
-  if ( isset( $_FILES['uploadFile'] ) )
+  // Did we get an upload request?
+  $bHandlingUploadRequest = isset( $_FILES['uploadFile'] );
+
+  if ( $bHandlingUploadRequest )
   {
-    $aFile = $_FILES['uploadFile'];
-    $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
-    $bSuccess = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
-    $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $aFile['name'] . "</b>'." ) : ( "Failed to upload file '<b>" . $aFile['name'] . "</b>'." );
+    // Get name of temporary copy
+    $sTempFilename = $_FILES['uploadFile']['tmp_name'];
+
+    // If we got a temporary copy of the file...
+    if ( $sTempFilename )
+    {
+      // Move temporary file to cache
+      $sFilename = $_FILES['uploadFile']['name'];
+      $bSuccess = move_uploaded_file( $sTempFilename, getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/" . $sFilename );
+      $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $sFilename . "</b>'." ) : ( "Failed to upload file '<b>" . $sFilename . "</b>'." );
+    }
+    else
+    {
+      // Did not get a file; set error message
+      $bSuccess = false;
+      $sMessage = 'No file selected.';
+    }
   }
 ?>
 
@@ -41,7 +57,7 @@
 
     <!-- Report status of upload operation -->
     <?php
-    if ( isset( $bSuccess ) )
+    if ( $bHandlingUploadRequest )
     {
     ?>
       <div class="alert alert-<?=( $bSuccess ? 'success' : 'danger' )?>">
