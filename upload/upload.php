@@ -13,8 +13,8 @@
     $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
 
     $bMoved = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
-    error_log( '=====> success? ===> ' . ( $bMoved ? 'yes' : 'no' ) );
   }
+
 
 ?>
 
@@ -26,6 +26,7 @@
 
   <form method="post" enctype="multipart/form-data">
 
+    <!-- Upload file picker -->
     <div class="form-group" id="uploadBlock" >
       <label>Select a file to upload:</label>
       <div class="input-group">
@@ -39,11 +40,24 @@
       </div>
     </div>
 
-    <div class="pt-4 text-center">
+    <!-- Upload button -->
+    <div class="py-4 text-center">
       <button type="submit" class="btn btn-primary">
         Upload
       </button>
     </div>
+
+    <!-- Report status of upload operation -->
+    <?php
+    if ( isset( $bMoved ) )
+    {
+    ?>
+      <div class="alert alert-<?= ( $bMoved ? 'success' : 'danger' ) ?>">
+        moo
+      </div>
+    <?php
+    }
+    ?>
 
   </form>
 
