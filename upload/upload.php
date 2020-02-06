@@ -4,16 +4,8 @@
   if ( isset( $_FILES['uploadFile'] ) )
   {
     $aFile = $_FILES['uploadFile'];
-    error_log( '==> files=' . print_r( $aFile, true ) );
-    foreach ( $aFile as $key => $val )
-    {
-      error_log( $key . ' => ' . $val );
-    }
-
     $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
-
     $bSuccess = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
-
     $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $aFile['name'] . "</b>'" ) : ( "Failed to upload file '<b>" . $aFile['name'] . "</b>'" );
   }
 
