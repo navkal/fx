@@ -1,9 +1,20 @@
 <?php
   // Copyright 2020 Energize Andover.  All rights reserved.
 
-  error_log( '=========> upload.php' );
-  error_log( '==> request=' . print_r( $_REQUEST, true ) );
-  error_log( '==> files=' . print_r( $_FILES, true ) );
+  if ( isset( $_FILES['uploadFile'] ) )
+  {
+    $aFile = $_FILES['uploadFile'];
+    error_log( '==> files=' . print_r( $aFile, true ) );
+    foreach ( $aFile as $key => $val )
+    {
+      error_log( $key . ' => ' . $val );
+    }
+
+    $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
+
+    $bMoved = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
+    error_log( '=====> success? ===> ' . ( $bMoved ? 'yes' : 'no' ) );
+  }
 
 ?>
 
