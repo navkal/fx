@@ -49,7 +49,7 @@
         else
         {
       ?>
-        <div class="alert alert-danger">
+        <div class="alert alert-secondary">
           No files available to download.
         </div>
       <?php
