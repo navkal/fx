@@ -37,9 +37,24 @@
     </div>
 
     <div class="pt-4 text-center">
-      <a id="download_button" class="btn btn-primary" href="" role="button" title="Download selected file">
-        Download
-      </a>
+      <?php
+        if ( count( $aFilenames ) )
+        {
+      ?>
+          <a id="download_button" class="btn btn-primary" href="" role="button" title="Download selected file">
+            Download
+          </a>
+      <?php
+        }
+        else
+        {
+      ?>
+        <div class="alert alert-danger">
+          No files available to download.
+        </div>
+      <?php
+        }
+      ?>
     </div>
 
   </form>
