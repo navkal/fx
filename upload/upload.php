@@ -6,10 +6,8 @@
     $aFile = $_FILES['uploadFile'];
     $uploadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/";
     $bSuccess = move_uploaded_file( $aFile['tmp_name'], $uploadDir . $aFile['name'] );
-    $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $aFile['name'] . "</b>'" ) : ( "Failed to upload file '<b>" . $aFile['name'] . "</b>'" );
+    $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $aFile['name'] . "</b>'." ) : ( "Failed to upload file '<b>" . $aFile['name'] . "</b>'." );
   }
-
-
 ?>
 
 <div class="container">
