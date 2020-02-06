@@ -1,6 +1,12 @@
 <?php
   // Copyright 2020 Energize Andover.  All rights reserved.
 
+  if ( ! isset( $_SESSION ) )
+  {
+    http_response_code( 404 );
+    exit( 1 );
+  }
+
   $downloadDir = getenv( "FILE_EXCHANGE_CACHE" ) . "/downloads/";
   $aFilenames = array_slice( scandir( $downloadDir ), 2 );
   natcasesort( $aFilenames );
