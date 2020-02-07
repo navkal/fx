@@ -21,7 +21,7 @@
       // Move temporary file to cache
       $sFilename = $_FILES['uploadFile']['name'];
       $bSuccess = move_uploaded_file( $sTempFilename, getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/" . $sFilename );
-      $sMessage = $bSuccess ? ( "Uploaded file '" . $sFilename . "'." ) : ( "Failed to upload file '" . $sFilename . "'." );
+      $sMessage = $bSuccess ? ( 'Uploaded: ' . $sFilename ) : ( 'Failed to upload: ' . $sFilename );
     }
     else
     {
@@ -66,7 +66,7 @@
     if ( $bHandlingUploadRequest )
     {
     ?>
-      <div id="uploadMessage" class="alert alert-<?=( $bSuccess ? 'success' : 'primary' )?>">
+      <div id="uploadMessage" class="alert alert-<?=( $bSuccess ? 'success' : 'danger' )?>">
         <?=$sMessage?>
       </div>
     <?php
@@ -100,8 +100,8 @@
   function setWaitCursor()
   {
     // Report status
-    $( '#uploadMessage' ).removeClass( 'alert-primary' ).addClass( 'alert-success' );
-    $( '#uploadMessage' ).text( "Uploading file '" + $( '#uploadFilename' ).val() + "'." );
+    $( '#uploadMessage' ).removeClass( 'alert-danger' ).addClass( 'alert-success' );
+    $( '#uploadMessage' ).text( 'Uploading: ' + $( '#uploadFilename' ).val() );
 
     // Hide and disable controls
     $( '#browseButton' ).css( 'visibility', 'hidden' );
