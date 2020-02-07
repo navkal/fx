@@ -66,7 +66,7 @@
     if ( $bHandlingUploadRequest )
     {
     ?>
-      <div id="uploadMessage" class="alert alert-<?=( $bSuccess ? 'success' : 'secondary' )?>">
+      <div id="uploadMessage" class="alert alert-<?=( $bSuccess ? 'success' : 'primary' )?>">
         <?=$sMessage?>
       </div>
     <?php
@@ -100,13 +100,11 @@
   function setWaitCursor()
   {
     // Report status
-    $( '#uploadMessage' ).removeClass( 'alert-secondary' ).addClass( 'alert-success' );
+    $( '#uploadMessage' ).removeClass( 'alert-primary' ).addClass( 'alert-success' );
     $( '#uploadMessage' ).text( "Uploading file '" + $( '#uploadFilename' ).val() + "'." );
 
-    // Update controls
-    $( '#browseButton' ).hide();
-    $( '#uploadFilename' ).val( '' );
-    $( '#uploadFilename' ).off( 'click' );
+    // Hide and disable controls
+    $( '#browseButton,#uploadFilename' ).prop( 'visibility', 'hidden' );
     $( '#uploadButton' ).prop( 'disabled', true );
 
     // Set wait cursor
