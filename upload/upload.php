@@ -100,7 +100,7 @@
   function setWaitCursor()
   {
     $( '#uploadFilename' ).prop( 'disabled', true );
-    $( '#browseButton' ).prop( 'disabled', true );
+    $( '#browseButton' ).css( 'visibility', 'hidden' );
     $( '#uploadButton' ).prop( 'disabled', true );
     $( '#uploadMessage' ).hide();
     $( '#view' ).css( 'cursor', 'wait' );
