@@ -104,7 +104,8 @@
     $( '#uploadMessage' ).text( "Uploading file '" + $( '#uploadFilename' ).val() + "'." );
 
     // Hide and disable controls
-    $( '#browseButton,#uploadFilename' ).prop( 'visibility', 'hidden' );
+    $( '#browseButton' ).css( 'visibility', 'hidden' );
+    $( '#uploadFilename' ).css( 'visibility', 'hidden' );
     $( '#uploadButton' ).prop( 'disabled', true );
 
     // Set wait cursor
