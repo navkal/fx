@@ -38,7 +38,7 @@
     Upload a File
   </div>
 
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" onsubmit="setWaitCursor();" enctype="multipart/form-data">
 
     <!-- Upload file picker -->
     <div class="form-group" >
@@ -56,7 +56,7 @@
 
     <!-- Upload button -->
     <div class="py-4 text-center">
-      <button type="submit" class="btn btn-primary">
+      <button id="uploadButton" type="submit" class="btn btn-primary">
         Upload
       </button>
     </div>
@@ -95,9 +95,13 @@
   {
     var sFilename = $( '#' + sFileId ).val().split('\\').pop().split('/').pop();
     $( '#' + sFilenameId ).val( sFilename );
-    
-    // Also hide the alert
+  }
+
+  function setWaitCursor()
+  {
+    $( '#uploadButton' ).prop( 'disabled', true );
     $( '#uploadMessage' ).hide();
+    $( '#view' ).css( 'cursor', 'wait' );
   }
 
 </script>
