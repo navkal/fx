@@ -41,7 +41,7 @@
   <form method="post" enctype="multipart/form-data">
 
     <!-- Upload file picker -->
-    <div class="form-group" id="uploadBlock" >
+    <div class="form-group" >
       <label>Select a file to upload:</label>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -66,7 +66,7 @@
     if ( $bHandlingUploadRequest )
     {
     ?>
-      <div class="alert alert-<?=( $bSuccess ? 'success' : 'danger' )?>">
+      <div id="uploadMessage" class="alert alert-<?=( $bSuccess ? 'success' : 'danger' )?>">
         <?=$sMessage?>
       </div>
     <?php
@@ -90,12 +90,14 @@
     }
   }
 
-
   // Show selected filename in input field
   function showFilename( sFilenameId, sFileId )
   {
     var sFilename = $( '#' + sFileId ).val().split('\\').pop().split('/').pop();
     $( '#' + sFilenameId ).val( sFilename );
+    
+    // Also hide the alert
+    $( '#uploadMessage' ).hide();
   }
 
 </script>
