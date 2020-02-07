@@ -49,9 +49,9 @@
         else
         {
       ?>
-        <div class="alert alert-secondary">
-          No files available to download.
-        </div>
+          <div class="alert alert-secondary">
+            No files available to download.
+          </div>
       <?php
         }
       ?>
