@@ -21,7 +21,7 @@
       // Move temporary file to cache
       $sFilename = $_FILES['uploadFile']['name'];
       $bSuccess = move_uploaded_file( $sTempFilename, getenv( "FILE_EXCHANGE_CACHE" ) . "/uploads/" . $sFilename );
-      $sMessage = $bSuccess ? ( "Uploaded file '<b>" . $sFilename . "</b>'." ) : ( "Failed to upload file '<b>" . $sFilename . "</b>'." );
+      $sMessage = $bSuccess ? ( "Uploaded file '" . $sFilename . "'." ) : ( "Failed to upload file '" . $sFilename . "'." );
     }
     else
     {
@@ -99,10 +99,15 @@
 
   function setWaitCursor()
   {
-    $( '#uploadFilename' ).prop( 'disabled', true );
-    $( '#browseButton' ).css( 'visibility', 'hidden' );
+    // Report status
+    $( '#uploadMessage' ).text( "Uploading file '" + $( '#uploadFilename' ).val() + "'." );
+
+    // Update controls
+    $( '#browseButton' ).hide();
+    $( '#uploadFilename' ).val( '' );
     $( '#uploadButton' ).prop( 'disabled', true );
-    $( '#uploadMessage' ).hide();
+
+    // Set wait cursor
     $( '#view' ).css( 'cursor', 'wait' );
   }
 
